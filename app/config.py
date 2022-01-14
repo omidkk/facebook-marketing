@@ -20,6 +20,13 @@ class Config:
     SQLALCHEMY_ECHO = False
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
+    # Facebook Marketing
+    ACCESS_TOKEN = environ.get("ACCESS_TOKEN")
+    AD_ACCOUNT_ID = environ.get("AD_ACCOUNT_ID")
+    APP_SECRET = environ.get("APP_SECRET")
+    APP_ID = environ.get("APP_ID")
+    PAGE_ID = environ.get("PAGE_ID")
+
     logging.basicConfig(
         filename=environ.get("LOG_FILE"),
         level=logging._nameToLevel.get(environ.get("LOG_LEVEL")),
