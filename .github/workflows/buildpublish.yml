@@ -33,4 +33,7 @@ jobs:
           IMAGE_TAG: ${{ github.sha }}
           BRANCH_NAME: ${{ steps.extract_branch.outputs.branch }}
         run: |
-          docker-compose build
+          run: |
+          docker build -t $ECR_REGISTRY_EU/$ECR_REPOSITORY:$IMAGE_TAG -t $ECR_REGISTRY_EU/$ECR_REPOSITORY:$BRANCH_NAME .
+          docker push $ECR_REGISTRY_EU/$ECR_REPOSITORY:$IMAGE_TAG
+          docker push $ECR_REGISTRY_EU/$ECR_REPOSITORY:$BRANCH_NAME
