@@ -32,4 +32,5 @@ jobs:
           ECR_REPOSITORY: ${{ github.event.repository.name }}
           IMAGE_TAG: ${{ github.sha }}
           BRANCH_NAME: ${{ steps.extract_branch.outputs.branch }}
-        run: ls
+        run: |
+          docker-compose build
