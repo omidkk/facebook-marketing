@@ -36,5 +36,4 @@ jobs:
           run: |
           echo $ECR_REGISTRY_EU
           docker-compose build
-          docker-compose tag facebook-marketing:latest ECR_REGISTRY_EU/ECR_REPOSITORY:latest
           docker-compose push ECR_REGISTRY_EU/ECR_REPOSITORY:latest
