@@ -15,8 +15,8 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: eu-central-1
           
-      - name: Login to Amazon ECR - US
-        id: login-ecr-us
+      - name: Login to Amazon ECR - EU
+        id: login-ecr-eu
         uses: aws-actions/amazon-ecr-login@v1
 
 
@@ -24,3 +24,12 @@ jobs:
         shell: bash
         run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
         id: extract_branch
+        
+      - name: Build, tag, and push image to Amazon ECR
+        id: build-image
+        env:
+          ECR_REGISTRY_EU: ${{ steps.login-ecr-eu.outputs.registry }}
+          ECR_REPOSITORY: ${{ github.event.repository.name }}
+          IMAGE_TAG: ${{ github.sha }}
+          BRANCH_NAME: ${{ steps.extract_branch.outputs.branch }}
+        run: ls
