@@ -18,7 +18,7 @@ class HealthCheck(Resource):
         """get method to view the health"""
 
         return (
-            {"message": "Welcome to OUNASS facebook marketing app"},
+            {"message": "Welcome to OUNASS facebook marketing app!"},
             200,
             {"content-type": "application/json"},
         )
