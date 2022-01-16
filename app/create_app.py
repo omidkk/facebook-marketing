@@ -1,9 +1,8 @@
 """Initialize Flask app."""
 import logging
 
-from flask import Flask
-
 from config import Config
+from flask import Flask
 from rest.api import api_v1
 
 _log = logging.getLogger(__name__)

@@ -1,0 +1,5 @@
+[tool.black]
+line-length = 120
+exclude = '.git|venv'
+multi_line_output = 3
+include_trailing_comma = true
