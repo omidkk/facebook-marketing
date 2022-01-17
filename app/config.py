@@ -14,7 +14,6 @@ class Config:
     FLASK_APP = environ.get("FLASK_APP")
     FLASK_ENV = environ.get("FLASK_ENV")
 
-
     # Facebook Marketing
     ACCESS_TOKEN = environ.get("ACCESS_TOKEN")
     AD_ACCOUNT_ID = environ.get("AD_ACCOUNT_ID")
