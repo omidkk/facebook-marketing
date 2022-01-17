@@ -64,15 +64,15 @@ class CreatesCampaign(Resource):
     @facebook_marketing_ns.expect(create_campaign)
     def post(self):
         args = request.get_json()
-        # try:
-        respone = FacebookMarketing.create_campaign(args["name"], args["objective"])
-        return {"message": str(respone)}, 200, {"content-type": "application/json"}
-        # except FacebookRequestError:
-        #     return (
-        #         {"message": "Facebook Request Error!"},
-        #         500,
-        #         {"content-type": "application/json"},
-        #     )
+        try:
+            respone = FacebookMarketing.create_campaign(args["name"], args["objective"])
+            return {"message": str(respone)}, 200, {"content-type": "application/json"}
+        except FacebookRequestError:
+            return (
+                {"message": "Facebook Request Error!"},
+                500,
+                {"content-type": "application/json"},
+            )
 
 
 @facebook_marketing_ns.route("/create_adset")
