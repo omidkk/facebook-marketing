@@ -3,6 +3,7 @@ import uuid
 from datetime import datetime, timedelta
 
 import requests
+from facebook_business.adobjects.ad import Ad
 from facebook_business.adobjects.adaccount import AdAccount
 from facebook_business.adobjects.adcreative import AdCreative
 from facebook_business.api import FacebookAdsApi
@@ -99,7 +100,6 @@ class FacebookMarketing:
             "adset_id": adset_id,
             "creative": {"creative_id": creative_id},
             "status": "PAUSED",
-            "bid_info": {"CLICKS": 150},
         }
         AdAccount(id).create_ad(
             fields=fields,
@@ -119,10 +119,9 @@ class FacebookMarketing:
         return AdAccount(id).get_ad_sets()
 
     @classmethod
-    def get_preview(cls):
+    def get_preview(cls, ad_id):
         FacebookAdsApi.init(access_token=Config.ACCESS_TOKEN)
-        id = Config.AD_ACCOUNT_ID
         params = {
             "ad_format": "DESKTOP_FEED_STANDARD",
         }
-        return AdCreative(id).get_previews(fields=[], params=params)
+        return Ad(ad_id).get_previews(fields=[], params=params)

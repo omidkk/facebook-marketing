@@ -154,12 +154,12 @@ class GetAdsetInsigth(Resource):
             )
 
 
-@facebook_marketing_ns.route("/get_preview")
+@facebook_marketing_ns.route("/get_preview/<string:ad_id>")
 class HealthCheck(Resource):
     @facebook_marketing_ns.doc("returns preview")
-    def get(self):
+    def get(self, ad_id):
         try:
-            respone = FacebookMarketing.get_preview()
+            respone = FacebookMarketing.get_preview(ad_id)
             return {"message": str(respone)}, 200, {"content-type": "application/json"}
         except FacebookRequestError:
             return (
